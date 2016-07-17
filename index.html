@@ -1,0 +1,56 @@
+<!doctype html>
+<!-- @license Copyright (c) 2016 Charbel Rami. All rights reserved. -->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
+  <title>ufabc toolbox</title>
+  <link rel="stylesheet" href="https://npmcdn.com/normalize.css/normalize.css">
+  <link rel="stylesheet" href="https://npmcdn.com/sanitize.css/sanitize.css">
+  <link rel="stylesheet" href="dist/compiled.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1 class="page-title">ufabc toolbox</h1>
+    <button id="js-button-sign-in">sign in</button>
+    <button id="js-button-sign-out" hidden>sign out</button>
+    <button id="js-button-delete-user" hidden>delete user</button>
+  </header>
+
+  <main>
+    <section id="js-signedin-user" hidden>
+      <div class="responsive-container">
+        <div class="responsive-item" hidden>
+          <h3 class="list-title">predefined list <small id="js-list-all-length"></small></h3>
+          <ul class="list" id="js-list-all"></ul>
+        </div>
+        <div class="responsive-item">
+          <h3 class="list-title">to-do list</h3>
+          <ul class="list" id="js-list-todo"></ul>
+        </div>
+        <div class="responsive-item">
+          <h3 class="list-title">done</h3>
+          <ul class="list" id="js-list-done"></ul>
+        </div>
+      </div>
+      <div class="list-menu">
+        <footer class="page-footer">
+          &copy; 2016 Charbel Rami. All rights reserved.
+        </footer>
+        <button class="" type="button" id="js-button-populate-list">populate</button>
+        <button class="" type="button" id="js-button-empty-list">empty</button>
+        <button class="" type="button" id="js-button-save-lists">save</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+  <script src="https://npmcdn.com/dragula@3.7.1/dist/dragula.min.js"></script>
+  <script src="dist/compiled.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "ufabc-toolbox",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Charbel Rami",
+  "scripts": {
+    "version": "git add -A .",
+    "postversion": "git push --follow-tags"
+  }
+}
