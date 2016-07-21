@@ -16,13 +16,44 @@
 
   <header class="page-header">
     <h1 class="page-title">ufabc toolbox</h1>
-    <button id="js-button-sign-in">Google sign in</button>
-    <button id="js-button-sign-out" hidden>sign out</button>
-    <button id="js-button-delete-user" hidden>delete user</button>
+    <nav>
+      <ul class="tab-bar">
+        <li class="tab-item js-signedout-user">
+          <button class="tab" id="js-button-sign-in">Google sign in</button>
+        </li>
+        <li class="tab-item js-signedin-user">
+          <a class="tab" data-key="0" tabindex="0" href="#">
+          Conta
+        </a>
+        </li>
+        <li class="tab-item js-signedin-user">
+          <a class="tab" data-key="1" tabindex="0" href="#">
+          Listas
+        </a>
+        </li>
+        <li class="tab-item js-signedin-user">
+          <a class="tab" data-key="2" tabindex="0" href="#">
+          Cronograma
+        </a>
+        </li>
+        <li class="tab-item">
+          <a class="tab" data-key="3" tabindex="0" href="#">
+          Sobre
+        </a>
+        </li>
+        <li class="tab-item js-signedin-user">
+          <button class="tab" id="js-button-sign-out">Sair</button>
+        </li>
+      </ul>
+    </nav>
   </header>
 
   <main>
-    <section id="js-signedin-user" hidden>
+    <div class="tab-pane" data-key="0">
+      <button id="js-button-delete-user" class="js-signedin-user">delete user</button>
+    </div>
+    <div class="tab-pane" data-key="1">
+    <section class="js-signedin-user">
       <div class="responsive-container">
         <div class="responsive-item" hidden>
           <h3 class="list-title">predefined list <small id="js-list-all-length"></small></h3>
@@ -39,17 +70,88 @@
       </div>
       <div class="list-menu">
         <footer class="page-footer">
-          &copy; 2016 Charbel Rami. All rights reserved. <a href="https://raw.githubusercontent.com/ufabctoolbox/ufabctoolbox.github.io/master/_policies/terms.txt">Terms</a>
+          &copy; 2016 Charbel Rami. All rights reserved.
         </footer>
         <button class="" type="button" id="js-button-populate-list">populate</button>
         <button class="" type="button" id="js-button-empty-list">empty</button>
         <button class="" type="button" id="js-button-save-lists">save</button>
       </div>
     </section>
+    </div>
+    <div class="tab-pane" data-key="2">
+      <section class="main-section">
+        <form id="js-form-new-post">
+          <p>
+            <div class="js-input">
+              <select class="input" id="js-select-course" required data-error-message="selecione uma opção."></select>
+              <div class="input-line"></div>
+              <div class="input-error"></div>
+            </div>
+          </p>
+          <p>
+            <div class="js-input">
+              <label for="date">Data</label>
+              <input class="input" id="date" type="datetime-local" data-error-message="campo obrigatório." max="2017-12-31T00:00:00">
+              <div class="input-line"></div>
+              <div class="input-error"></div>
+            </div>
+          </p>
+          <p>
+            <div class="js-input">
+              <label for="class">Turma (Ex: A, A1, B)</label>
+              <div class="input-container">
+                <input class="input" id="class" type="text" required data-error-message="campo obrigatório." maxlength="3">
+                <div class="input-char-counter"></div>
+              </div>
+              <div class="input-line"></div>
+              <div class="input-error"></div>
+            </div>
+          </p>
+          <p>
+            <div class="js-input">
+              <select class="input" required data-error-message="selecione uma opção.">
+            <option value="">Período</option>
+            <option value="diurno">Diurno</option>
+            <option value="noturno">Noturno</option>
+          </select>
+              <div class="input-line"></div>
+              <div class="input-error"></div>
+            </div>
+          </p>
+          <p>
+            <div class="js-input">
+              <select class="input" required data-error-message="selecione uma opção.">
+            <option value="">Local</option>
+            <option value="SA">SA</option>
+            <option value="SBC">SBC</option>
+          </select>
+              <div class="input-line"></div>
+              <div class="input-error"></div>
+            </div>
+          </p>
+          <p>
+            <div class="js-input">
+              <label for="details">Detalhes</label>
+              <div class="input-container">
+                <textarea class="input" id="details" rows="5" maxlength="200" required data-error-message="campo obrigatório (teste, pode não ser mais obrigatório em uma próxima versão)."></textarea>
+                <div class="input-char-counter"></div>
+              </div>
+              <div class="input-line"></div>
+              <div class="input-error"></div>
+            </div>
+            <button class="" type="submit" name="button">Salvar</button>
+          </p>
+        </form>
+      </section>
+
+      <section class="main-section" id="js-section-user-posts"></section>
+    </div>
   </main>
 
   <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
   <script src="https://npmcdn.com/dragula@3.7.1/dist/dragula.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/locale/pt-br.js"></script>
   <script src="dist/compiled.js"></script>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
